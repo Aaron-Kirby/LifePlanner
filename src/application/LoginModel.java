@@ -19,4 +19,28 @@ public class LoginModel {
 			return false;
 		}
 	}
+
+	public boolean isLogin (String user, String pass) throws SQLException{
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		String query = "select * from employee where username = ? and password = ?";
+		try {
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, user);
+			preparedStatement.setString(2, pass);
+
+			resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		} catch (Exception e) {
+			return false;
+		} finally {
+			preparedStatement.close();
+			resultSet.close();
+		}
+	}
 }
