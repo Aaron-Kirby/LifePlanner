@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -40,7 +41,7 @@ public class LoginController implements Initializable {
 		try {
 			if (loginModel.isLogin(txtUserName.getText(), txtPassword.getText())) {
 				isConnected.setText("username and passowrd is correct");
-
+				((Node)event.getSource()).getScene().getWindow().hide();
 				Stage primaryStage = new Stage();
 				FXMLLoader loader = new FXMLLoader();
 				Pane root = loader.load(getClass().getResource("/application/User.fxml").openStream());
@@ -50,7 +51,6 @@ public class LoginController implements Initializable {
 				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 				primaryStage.setScene(scene);
 				primaryStage.show();
-
 			}
 			else {
 				isConnected.setText("usrname and passowrd is NOT correct");
