@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginController">
    <children>
-      <Label layoutX="47.0" layoutY="30.0" prefHeight="66.0" prefWidth="197.0" text="Welcome to LifePlanner!" textAlignment="CENTER" textFill="#f50a0a" wrapText="true">
+      <Label layoutX="47.0" layoutY="30.0" prefHeight="66.0" prefWidth="197.0" text="Welcome to LifePlanner!" textAlignment="CENTER" textFill="#0c42f5" wrapText="true">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -24,10 +24,20 @@
             <Font size="18.0" />
          </font>
       </PasswordField>
-      <Button layoutX="111.0" layoutY="229.0" mnemonicParsing="false" onAction="#Login" text="Login">
+      <Button layoutX="38.0" layoutY="229.0" mnemonicParsing="false" onAction="#Login" text="Login">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
+      <Button layoutX="144.0" layoutY="229.0" mnemonicParsing="false" onAction="#createUser" text="Create User">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label fx:id="validUser" alignment="CENTER" contentDisplay="CENTER" layoutX="11.0" layoutY="96.0" prefHeight="25.0" prefWidth="267.0" text="Please Login or Create a new User" textAlignment="CENTER" textFill="#f50a0a" wrapText="true">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

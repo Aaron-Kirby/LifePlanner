@@ -14,11 +14,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class LoginController implements Initializable {
 	public LoginModel loginModel = new LoginModel();
 
+	@FXML
+	private Label validUser;
 	@FXML
 	private TextField txtUserName;
 	@FXML
@@ -44,6 +47,33 @@ public class LoginController implements Initializable {
 				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 				primaryStage.setScene(scene);
 				primaryStage.show();
+			}
+			else {
+				validUser.setText("Username or Password is invalid!");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void createUser (ActionEvent event) {
+		try {
+			if (loginModel.uniqueUsername(txtUserName.getText())) {
+				((Node)event.getSource()).getScene().getWindow().hide();
+				Stage primaryStage = new Stage();
+				FXMLLoader loader = new FXMLLoader();
+				BorderPane root = loader.load(getClass().getResource("/application/User.fxml").openStream());
+				UserController userController = (UserController)loader.getController();
+				userController.getUser(txtUserName.getText());
+				Scene scene = new Scene(root);
+				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+				primaryStage.setScene(scene);
+				primaryStage.show();
+			}
+			else {
+				validUser.setText("Username already exists!");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

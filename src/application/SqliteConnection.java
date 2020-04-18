@@ -2,7 +2,7 @@ package application;
 import java.sql.*;
 
 public class SqliteConnection {
-	public static Connection loginConnector() {
+	public static Connection Connector() {
 		try {
 			Class.forName("org.sqlite.JDBC");
 			Connection conn = DriverManager.getConnection("jdbc:sqlite:LifePlannerDb.db");
