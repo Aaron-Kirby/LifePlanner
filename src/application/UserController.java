@@ -100,6 +100,21 @@ public class UserController implements Initializable{
 		}
 	}
 
+	public void goToStatistics (ActionEvent event) {
+		try {
+			((Node)event.getSource()).getScene().getWindow().hide();
+			Stage primaryStage = new Stage();
+			FXMLLoader loader = new FXMLLoader();
+			Pane root = loader.load(getClass().getResource("/application/Statistics.fxml").openStream());
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			primaryStage.show();
+		} catch (Exception e) {
+
+		}
+	}
+
 	public void signOut(ActionEvent event) {
 		try {
 			((Node)event.getSource()).getScene().getWindow().hide();
