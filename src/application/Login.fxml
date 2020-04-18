@@ -9,9 +9,9 @@
 
 <AnchorPane prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginController">
    <children>
-      <Label fx:id="isConnected" layoutX="47.0" layoutY="30.0" prefHeight="66.0" prefWidth="197.0" text="Status" textAlignment="CENTER" textFill="#f50a0a" wrapText="true">
+      <Label layoutX="47.0" layoutY="30.0" prefHeight="66.0" prefWidth="197.0" text="Welcome to LifePlanner!" textAlignment="CENTER" textFill="#f50a0a" wrapText="true">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
       <TextField fx:id="txtUserName" layoutX="38.0" layoutY="131.0" promptText="User Name">

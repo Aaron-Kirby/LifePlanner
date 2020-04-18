@@ -20,26 +20,20 @@ public class LoginController implements Initializable {
 	public LoginModel loginModel = new LoginModel();
 
 	@FXML
-	private Label isConnected;
-	@FXML
 	private TextField txtUserName;
 	@FXML
 	private TextField txtPassword;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		if (loginModel.isDbConnected()) {
-			isConnected.setText("Welcome to LifePlanner!");
-		}
-		else {
-			isConnected.setText("Not Connected");
+		if (!loginModel.isDbConnected()) {
+			System.out.println("Database Not Connected");
 		}
 	}
 
 	public void Login (ActionEvent event) {
 		try {
 			if (loginModel.isLogin(txtUserName.getText(), txtPassword.getText())) {
-				isConnected.setText("username and passowrd is correct");
 				((Node)event.getSource()).getScene().getWindow().hide();
 				Stage primaryStage = new Stage();
 				FXMLLoader loader = new FXMLLoader();
@@ -51,11 +45,7 @@ public class LoginController implements Initializable {
 				primaryStage.setScene(scene);
 				primaryStage.show();
 			}
-			else {
-				isConnected.setText("usrname and passowrd is NOT correct");
-			}
 		} catch (SQLException e) {
-			isConnected.setText("usrname and passowrd is NOT correct");
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
