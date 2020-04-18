@@ -5,7 +5,7 @@ public class SqliteConnection {
 	public static Connection loginConnector() {
 		try {
 			Class.forName("org.sqlite.JDBC");
-			Connection conn = DriverManager.getConnection("jdbc:sqlite:EmployeeDb.db");
+			Connection conn = DriverManager.getConnection("jdbc:sqlite:LifePlannerDb.db");
 			return conn;
 		} catch (Exception e) {
 			System.out.println(e);
