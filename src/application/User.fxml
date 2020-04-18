@@ -56,6 +56,11 @@
                   <Font size="18.0" />
                </font>
             </Button>
+            <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#goToHabits" text="Habits" GridPane.columnIndex="1">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
          </children>
       </GridPane>
    </center>
