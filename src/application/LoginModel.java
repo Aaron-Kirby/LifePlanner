@@ -20,7 +20,7 @@ public class LoginModel {
 		}
 	}
 
-	public boolean uniqueUsername (String user) throws SQLException {
+	public boolean uniqueUsername (String user, String pass) throws SQLException {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		String query = "select * from Login where Username = ?";
@@ -33,6 +33,16 @@ public class LoginModel {
 				return false;
 			}
 			else {
+				PreparedStatement preparedStatement2 = null;
+				String insert = "INSERT INTO Login(Username, Password) VALUES(?, ?)";
+				try {
+					preparedStatement2 = connection.prepareStatement(insert);
+					preparedStatement2.setString(1, user);
+					preparedStatement2.setString(2, pass);
+					preparedStatement2.executeUpdate();
+				} finally {
+					preparedStatement2.close();
+				}
 				return true;
 			}
 		} catch (Exception e) {

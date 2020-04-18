@@ -60,7 +60,7 @@ public class LoginController implements Initializable {
 
 	public void createUser (ActionEvent event) {
 		try {
-			if (loginModel.uniqueUsername(txtUserName.getText())) {
+			if (loginModel.uniqueUsername(txtUserName.getText(), txtPassword.getText())) {
 				((Node)event.getSource()).getScene().getWindow().hide();
 				Stage primaryStage = new Stage();
 				FXMLLoader loader = new FXMLLoader();
