@@ -10,11 +10,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class LoginController implements Initializable {
@@ -44,7 +43,7 @@ public class LoginController implements Initializable {
 				((Node)event.getSource()).getScene().getWindow().hide();
 				Stage primaryStage = new Stage();
 				FXMLLoader loader = new FXMLLoader();
-				Pane root = loader.load(getClass().getResource("/application/User.fxml").openStream());
+				BorderPane root = loader.load(getClass().getResource("/application/User.fxml").openStream());
 				UserController userController = (UserController)loader.getController();
 				userController.getUser(txtUserName.getText());
 				Scene scene = new Scene(root);

@@ -4,14 +4,25 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UserController">
    <top>
-      <HBox prefHeight="44.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <HBox alignment="TOP_CENTER" prefHeight="66.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="userLbl" text="User Welcome" />
-            <Button mnemonicParsing="false" onAction="#signOut" text="Sign Out" />
+            <BorderPane prefHeight="66.0" prefWidth="617.0">
+               <top>
+                  <Label fx:id="userLbl" text="User Welcome" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </top>
+               <right>
+                  <Button alignment="BOTTOM_RIGHT" mnemonicParsing="false" onAction="#signOut" text="Sign Out" textAlignment="CENTER" BorderPane.alignment="CENTER" />
+               </right>
+            </BorderPane>
          </children>
       </HBox>
    </top>
