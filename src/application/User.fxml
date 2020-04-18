@@ -26,4 +26,11 @@
          </children>
       </HBox>
    </top>
+   <center>
+      <Button mnemonicParsing="false" onAction="#goToCategories" text="Categories" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </center>
 </BorderPane>
