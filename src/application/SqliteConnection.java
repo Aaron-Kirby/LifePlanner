@@ -2,7 +2,7 @@ package application;
 import java.sql.*;
 
 public class SqliteConnection {
-	public static Connection Connector() {
+	public static Connection loginConnector() {
 		try {
 			Class.forName("org.sqlite.JDBC");
 			Connection conn = DriverManager.getConnection("jdbc:sqlite:EmployeeDb.db");

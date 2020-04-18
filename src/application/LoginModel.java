@@ -4,7 +4,7 @@ import java.sql.*;
 public class LoginModel {
 	Connection connection;
 	public LoginModel () {
-		connection = SqliteConnection.Connector();
+		connection = SqliteConnection.loginConnector();
 		if (connection == null) {
 			System.out.println("Connection not successful");
 			System.exit(1);
