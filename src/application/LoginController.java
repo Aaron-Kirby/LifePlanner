@@ -30,7 +30,7 @@ public class LoginController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		if (loginModel.isDbConnected()) {
-			isConnected.setText("Connected");
+			isConnected.setText("Welcome to LifePlanner!");
 		}
 		else {
 			isConnected.setText("Not Connected");
