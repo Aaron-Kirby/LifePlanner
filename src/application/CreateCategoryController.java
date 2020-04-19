@@ -43,6 +43,21 @@ public class CreateCategoryController implements Initializable{
 		}
 	}
 
+	public void selectCategory (ActionEvent event) {
+		try {
+			((Node)event.getSource()).getScene().getWindow().hide();
+			Stage primaryStage = new Stage();
+			FXMLLoader loader = new FXMLLoader();
+			Pane root = loader.load(getClass().getResource("/application/SelectCategory.fxml").openStream());
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			primaryStage.show();
+		} catch (Exception e) {
+
+		}
+	}
+
 	public void createButton (ActionEvent event) {
 		connection = SqliteConnection.Connector();
 		if (connection == null) {
