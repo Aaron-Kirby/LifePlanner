@@ -1,6 +1,8 @@
 package application;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -14,6 +16,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class CreateCategoryController implements Initializable{
+	Connection connection;
 	@FXML
 	private TextField txtTitle;
 	@FXML
@@ -41,8 +44,22 @@ public class CreateCategoryController implements Initializable{
 	}
 
 	public void createButton (ActionEvent event) {
-		System.out.println(txtTitle.getText());
+		connection = SqliteConnection.Connector();
+		if (connection == null) {
+			System.out.println("Connection not successful");
+			System.exit(1);
+		}
+
+		PreparedStatement pstmt = null;
+		String insert = "INSERT INTO Categories(ID, Title, Description) VALUES(?, ?, ?)";
+
 		try {
+			pstmt = connection.prepareStatement(insert);
+			pstmt.setInt(1, LoginModel.getUserID());
+			pstmt.setString(2, txtTitle.getText());
+			pstmt.setString(3, txtDescription.getText());
+			pstmt.executeUpdate();
+
 			((Node)event.getSource()).getScene().getWindow().hide();
 			Stage primaryStage = new Stage();
 			FXMLLoader loader = new FXMLLoader();
