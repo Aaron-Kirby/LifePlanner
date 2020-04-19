@@ -55,7 +55,7 @@ public class UserController implements Initializable{
 		}
 	}
 
-	public void goToTasks (ActionEvent event) {
+	/*public void goToTasks (ActionEvent event) {
 		try {
 			((Node)event.getSource()).getScene().getWindow().hide();
 			Stage primaryStage = new Stage();
@@ -68,7 +68,7 @@ public class UserController implements Initializable{
 		} catch (Exception e) {
 
 		}
-	}
+	}*/
 
 	public void goToHabits (ActionEvent event) {
 		try {
