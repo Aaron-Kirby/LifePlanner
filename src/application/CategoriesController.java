@@ -65,7 +65,7 @@ public class CategoriesController implements Initializable{
 							FXMLLoader loader = new FXMLLoader();
 							BorderPane root = loader.load(getClass().getResource("/application/SelectCategory.fxml").openStream());
 							SelectCategoryController scController = (SelectCategoryController)loader.getController();
-							scController.getLabel(title);
+							scController.setLabel(title);
 							Scene scene = new Scene(root);
 							scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 							primaryStage.setScene(scene);

@@ -43,15 +43,17 @@ public class SelectCategoryController implements Initializable{
 
 		//label = CategoriesController.getLabel();
 		//String category = categoryLabel.getText();
+		System.out.println(categoryLabel.getText());
+		System.out.println(LoginModel.getUserID());
 
 		PreparedStatement pstmt = null;
 		ResultSet resultSet = null;
-		String query = "SELECT Title from Goals where ID = ? and Category = ?";
+		String query = "SELECT Title from Goals where ID = ? and Category = Intelligence";
 
 		try {
 			pstmt = connection.prepareStatement(query);
 			pstmt.setInt(1, LoginModel.getUserID());
-			pstmt.setString(2, categoryLabel.getText());
+			//pstmt.setString(2, categoryLabel.getText());
 			resultSet = pstmt.executeQuery();
 
 			System.out.println("before while loop");
@@ -93,8 +95,9 @@ public class SelectCategoryController implements Initializable{
 		}
 	}
 
-	public void getLabel(String catLabel) {
+	public void setLabel(String catLabel) {
 		categoryLabel.setText(catLabel);
+		System.out.println("In getLabel");
 	}
 
 }
