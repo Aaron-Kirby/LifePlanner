@@ -27,8 +27,8 @@ public class CategoriesController implements Initializable{
 	Connection connection;
 	@FXML
 	private VBox vboxx;
-	@FXML
-	private BorderPane bPane = new BorderPane();
+	//@FXML
+	//private BorderPane bPane = new BorderPane();
 	//@FXML
 	//private static Label selectedLabel;
 	//String label = selectedLabel.getText();
@@ -53,15 +53,34 @@ public class CategoriesController implements Initializable{
 			pstmt.setInt(1, LoginModel.getUserID());
 			resultSet = pstmt.executeQuery();
 
-			int count = 0;
 			while(resultSet.next()) {
-				bPane.setLeft(new Button(resultSet.getString("Title")));
-				//String title = resultSet.getString("Title");
+				String title = resultSet.getString("Title");
+				Button tempButton = new Button(title);
+				tempButton.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent event) {
+						try {
+							((Node)event.getSource()).getScene().getWindow().hide();
+							Stage primaryStage = new Stage();
+							FXMLLoader loader = new FXMLLoader();
+							BorderPane root = loader.load(getClass().getResource("/application/SelectCategory.fxml").openStream());
+							SelectCategoryController scController = (SelectCategoryController)loader.getController();
+							scController.getLabel(title);
+							Scene scene = new Scene(root);
+							scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+							primaryStage.setScene(scene);
+							primaryStage.show();
+						} catch (Exception e) {
+
+						}
+					}
+				});
+				buttonList.add(tempButton);
 				//buttonList.add(new Button(title));
 			}
 
-			//vboxx.getChildren().clear();
-			//vboxx.getChildren().addAll(buttonList);
+			vboxx.getChildren().clear();
+			vboxx.getChildren().addAll(buttonList);
 
 			resultSet.close();
 			pstmt.close();

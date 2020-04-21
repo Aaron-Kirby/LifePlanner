@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="bPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CategoriesController">
@@ -20,4 +21,7 @@
          </font>
       </Button>
    </right>
+   <left>
+      <VBox fx:id="vboxx" prefHeight="373.0" prefWidth="175.0" BorderPane.alignment="CENTER" />
+   </left>
 </BorderPane>
