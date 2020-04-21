@@ -18,6 +18,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -26,6 +27,8 @@ public class CategoriesController implements Initializable{
 	Connection connection;
 	@FXML
 	private VBox vboxx;
+	@FXML
+	private BorderPane bPane = new BorderPane();
 	//@FXML
 	//private static Label selectedLabel;
 	//String label = selectedLabel.getText();
@@ -52,15 +55,13 @@ public class CategoriesController implements Initializable{
 
 			int count = 0;
 			while(resultSet.next()) {
-				String title = resultSet.getString("Title");
-				buttonList.add(new Button(title));
-				buttonList.get(count).setOnAction(e -> {
-					SelectCategoryController.class;
-				});
+				bPane.setLeft(new Button(resultSet.getString("Title")));
+				//String title = resultSet.getString("Title");
+				//buttonList.add(new Button(title));
 			}
 
-			vboxx.getChildren().clear();
-			vboxx.getChildren().addAll(buttonList);
+			//vboxx.getChildren().clear();
+			//vboxx.getChildren().addAll(buttonList);
 
 			resultSet.close();
 			pstmt.close();
@@ -86,7 +87,7 @@ public class CategoriesController implements Initializable{
 			((Node)event.getSource()).getScene().getWindow().hide();
 			Stage primaryStage = new Stage();
 			FXMLLoader loader = new FXMLLoader();
-			Pane root = loader.load(getClass().getResource("/application/SelectCategory.fxml").openStream());
+			BorderPane root = loader.load(getClass().getResource("/application/SelectCategory.fxml").openStream());
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);

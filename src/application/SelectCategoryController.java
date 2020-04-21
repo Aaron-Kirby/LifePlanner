@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
 public class SelectCategoryController implements Initializable{
@@ -21,10 +22,13 @@ public class SelectCategoryController implements Initializable{
 	//private Label label;
 	@FXML
 	private VBox vboxx;
+	@FXML
+	private BorderPane bPane = new BorderPane();
 	List<Button> buttonList = new ArrayList<>();
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		System.out.println("in SelectCategoryController");
 		connection = SqliteConnection.Connector();
 		if (connection == null) {
 			System.out.println("Connection not successful");
@@ -45,11 +49,12 @@ public class SelectCategoryController implements Initializable{
 			resultSet = pstmt.executeQuery();
 
 			while(resultSet.next()) {
-				String title = resultSet.getString("Title");
-				buttonList.add(new Button(title));
+				bPane.setLeft(new Button(resultSet.getString("Title")));
+				//String title = resultSet.getString("Title");
+				//buttonList.add(new Button(title));
 			}
-			vboxx.getChildren().clear();
-			vboxx.getChildren().addAll(buttonList);
+			//vboxx.getChildren().clear();
+			//vboxx.getChildren().addAll(buttonList);
 
 			resultSet.close();
 			pstmt.close();
