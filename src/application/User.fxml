@@ -14,7 +14,7 @@
    <top>
       <HBox alignment="TOP_CENTER" prefHeight="66.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="LifePlanner">
+            <Label fx:id="userLabel" text="LifePlanner">
                <font>
                   <Font size="18.0" />
                </font>

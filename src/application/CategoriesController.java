@@ -1,5 +1,6 @@
 package application;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,11 +28,14 @@ public class CategoriesController implements Initializable{
 	Connection connection;
 	@FXML
 	private VBox vboxx;
-
-	List<Button> buttonList = new ArrayList<>();
+	static ArrayList<Button> buttonList = new ArrayList<>();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+
+	}
+
+	public void makeButtons() {
 		connection = SqliteConnection.Connector();
 		if (connection == null) {
 			System.out.println("Connection not successful");
@@ -58,6 +62,7 @@ public class CategoriesController implements Initializable{
 							Stage primaryStage = new Stage();
 							FXMLLoader loader = new FXMLLoader();
 							BorderPane root = loader.load(getClass().getResource("/application/Goals.fxml").openStream());
+							GoalsController gc = (GoalsController)loader.getController();
 							Scene scene = new Scene(root);
 							scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 							primaryStage.setScene(scene);
@@ -80,15 +85,15 @@ public class CategoriesController implements Initializable{
 			e.printStackTrace();
 		} finally {
 		}
-
 	}
 
-	public void goToCreateCategory (ActionEvent event) {
+	public void onCreateCategoryClick (ActionEvent event) {
 		try {
 			((Node)event.getSource()).getScene().getWindow().hide();
 			Stage primaryStage = new Stage();
 			FXMLLoader loader = new FXMLLoader();
 			Pane root = loader.load(getClass().getResource("/application/CreateCategory.fxml").openStream());
+			CreateCategoryController ccc = (CreateCategoryController)loader.getController();
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
@@ -97,5 +102,4 @@ public class CategoriesController implements Initializable{
 
 		}
 	}
-
 }
