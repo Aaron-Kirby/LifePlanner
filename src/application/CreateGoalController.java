@@ -15,12 +15,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class CreateCategoryController implements Initializable{
+public class CreateGoalController implements Initializable{
 	Connection connection;
 	@FXML
 	private TextField txtTitle;
 	@FXML
 	private TextField txtDescription;
+	@FXML
+	private TextField txtCategory;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -33,7 +35,7 @@ public class CreateCategoryController implements Initializable{
 			((Node)event.getSource()).getScene().getWindow().hide();
 			Stage primaryStage = new Stage();
 			FXMLLoader loader = new FXMLLoader();
-			Pane root = loader.load(getClass().getResource("/application/Categories.fxml").openStream());
+			Pane root = loader.load(getClass().getResource("/application/Goals.fxml").openStream());
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
@@ -51,19 +53,20 @@ public class CreateCategoryController implements Initializable{
 		}
 
 		PreparedStatement pstmt = null;
-		String insert = "INSERT INTO Categories(ID, Title, Description) VALUES(?, ?, ?)";
+		String insert = "INSERT INTO Goals(ID, Category, Title, Description) VALUES(?, ?, ?, ?)";
 
 		try {
 			pstmt = connection.prepareStatement(insert);
 			pstmt.setInt(1, LoginModel.getUserID());
-			pstmt.setString(2, txtTitle.getText());
-			pstmt.setString(3, txtDescription.getText());
+			pstmt.setString(2, txtCategory.getText());
+			pstmt.setString(3, txtTitle.getText());
+			pstmt.setString(4, txtDescription.getText());
 			pstmt.executeUpdate();
 
 			((Node)event.getSource()).getScene().getWindow().hide();
 			Stage primaryStage = new Stage();
 			FXMLLoader loader = new FXMLLoader();
-			Pane root = loader.load(getClass().getResource("/application/Categories.fxml").openStream());
+			Pane root = loader.load(getClass().getResource("/application/Goals.fxml").openStream());
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);

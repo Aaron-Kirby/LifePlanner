@@ -27,12 +27,6 @@ public class CategoriesController implements Initializable{
 	Connection connection;
 	@FXML
 	private VBox vboxx;
-	//@FXML
-	//private BorderPane bPane = new BorderPane();
-	//@FXML
-	//private static Label selectedLabel;
-	//String label = selectedLabel.getText();
-
 
 	List<Button> buttonList = new ArrayList<>();
 
@@ -63,9 +57,7 @@ public class CategoriesController implements Initializable{
 							((Node)event.getSource()).getScene().getWindow().hide();
 							Stage primaryStage = new Stage();
 							FXMLLoader loader = new FXMLLoader();
-							BorderPane root = loader.load(getClass().getResource("/application/SelectCategory.fxml").openStream());
-							SelectCategoryController scController = (SelectCategoryController)loader.getController();
-							scController.setLabel(title);
+							BorderPane root = loader.load(getClass().getResource("/application/Goals.fxml").openStream());
 							Scene scene = new Scene(root);
 							scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 							primaryStage.setScene(scene);
@@ -76,7 +68,6 @@ public class CategoriesController implements Initializable{
 					}
 				});
 				buttonList.add(tempButton);
-				//buttonList.add(new Button(title));
 			}
 
 			vboxx.getChildren().clear();
@@ -90,30 +81,6 @@ public class CategoriesController implements Initializable{
 		} finally {
 		}
 
-	}
-
-	/*public static Label getLabel () {
-		return selectedLabel;
-	}
-
-	private void setLabel (Label lbl) {
-		selectedLabel = lbl;
-	}*/
-
-	public void selectCategory (ActionEvent event) {
-		//setLabel((Label)event.getSource());
-		try {
-			((Node)event.getSource()).getScene().getWindow().hide();
-			Stage primaryStage = new Stage();
-			FXMLLoader loader = new FXMLLoader();
-			BorderPane root = loader.load(getClass().getResource("/application/SelectCategory.fxml").openStream());
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.show();
-		} catch (Exception e) {
-
-		}
 	}
 
 	public void goToCreateCategory (ActionEvent event) {

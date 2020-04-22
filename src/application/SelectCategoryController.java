@@ -19,13 +19,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class SelectCategoryController implements Initializable{
 	Connection connection;
-	@FXML
-	private Label categoryLabel;
 	@FXML
 	private VBox vboxx;
 	@FXML
@@ -34,31 +33,22 @@ public class SelectCategoryController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		System.out.println("in SelectCategoryController");
 		connection = SqliteConnection.Connector();
 		if (connection == null) {
 			System.out.println("Connection not successful");
 			System.exit(1);
 		}
 
-		//label = CategoriesController.getLabel();
-		//String category = categoryLabel.getText();
-		System.out.println(categoryLabel.getText());
-		System.out.println(LoginModel.getUserID());
-
 		PreparedStatement pstmt = null;
 		ResultSet resultSet = null;
-		String query = "SELECT Title from Goals where ID = ? and Category = Intelligence";
+		String query = "SELECT Title from Goals where ID = ?";
 
 		try {
 			pstmt = connection.prepareStatement(query);
 			pstmt.setInt(1, LoginModel.getUserID());
-			//pstmt.setString(2, categoryLabel.getText());
 			resultSet = pstmt.executeQuery();
 
-			System.out.println("before while loop");
 			while(resultSet.next()) {
-				System.out.println("in while loop");
 				Button tempButton = new Button(resultSet.getString("Title"));
 				tempButton.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
@@ -67,8 +57,7 @@ public class SelectCategoryController implements Initializable{
 							((Node)event.getSource()).getScene().getWindow().hide();
 							Stage primaryStage = new Stage();
 							FXMLLoader loader = new FXMLLoader();
-							System.out.println("after loader");
-							BorderPane root = loader.load(getClass().getResource("/application/SelectCategory.fxml").openStream()); //change this to Goals, eventually create string to change dynamically
+							BorderPane root = loader.load(getClass().getResource("/application/Habits.fxml").openStream()); //change this to Habits, eventually create string to change dynamically
 							Scene scene = new Scene(root);
 							scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 							primaryStage.setScene(scene);
@@ -79,10 +68,7 @@ public class SelectCategoryController implements Initializable{
 					}
 				});
 				buttonList.add(tempButton);
-				//buttonList.add(new Button(title));
 			}
-			System.out.println("after while loop");
-
 			vboxx.getChildren().clear();
 			vboxx.getChildren().addAll(buttonList);
 
@@ -95,9 +81,18 @@ public class SelectCategoryController implements Initializable{
 		}
 	}
 
-	public void setLabel(String catLabel) {
-		categoryLabel.setText(catLabel);
-		System.out.println("In getLabel");
-	}
+	public void goToGoals (ActionEvent event) {
+		try {
+			((Node)event.getSource()).getScene().getWindow().hide();
+			Stage primaryStage = new Stage();
+			FXMLLoader loader = new FXMLLoader();
+			Pane root = loader.load(getClass().getResource("/application/Goals.fxml").openStream());
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			primaryStage.show();
+		} catch (Exception e) {
 
+		}
+	}
 }
