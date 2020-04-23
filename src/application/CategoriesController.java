@@ -1,6 +1,5 @@
 package application;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -25,18 +24,14 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class CategoriesController implements Initializable{
-	CreateCategoryController ccc = new CreateCategoryController();
 	Connection connection;
 	@FXML
 	private VBox vboxx;
+
 	List<Button> buttonList = new ArrayList<>();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
-	}
-
-	public CategoriesController() {
 		connection = SqliteConnection.Connector();
 		if (connection == null) {
 			System.out.println("Connection not successful");
@@ -85,9 +80,10 @@ public class CategoriesController implements Initializable{
 			e.printStackTrace();
 		} finally {
 		}
+
 	}
 
-	public void onCreateCategoryClick (ActionEvent event) {
+	public void goToCreateCategory (ActionEvent event) {
 		try {
 			((Node)event.getSource()).getScene().getWindow().hide();
 			Stage primaryStage = new Stage();
@@ -101,4 +97,5 @@ public class CategoriesController implements Initializable{
 
 		}
 	}
+
 }

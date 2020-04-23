@@ -6,10 +6,22 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UserController">
+   <top>
+      <HBox alignment="TOP_CENTER" prefHeight="66.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="LifePlanner">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </top>
    <left>
       <GridPane prefHeight="334.0" prefWidth="695.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -65,11 +77,4 @@
          </children>
       </GridPane>
    </left>
-   <top>
-      <Label fx:id="userLabel" text="LifePlanner" BorderPane.alignment="CENTER">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-   </top>
 </BorderPane>
