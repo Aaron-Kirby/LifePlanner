@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 
 public class LoginController implements Initializable {
 	public LoginModel loginModel = new LoginModel();
+	public UserController uc = new UserController();
 
 	@FXML
 	private Label validUser;
@@ -41,7 +42,7 @@ public class LoginController implements Initializable {
 				Stage primaryStage = new Stage();
 				FXMLLoader loader = new FXMLLoader();
 				BorderPane root = loader.load(getClass().getResource("/application/User.fxml").openStream());
-				UserController uc = (UserController)loader.getController();
+				uc = (UserController)loader.getController();
 				uc.setUser(txtUserName.getText());
 				Scene scene = new Scene(root);
 				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -65,7 +66,7 @@ public class LoginController implements Initializable {
 				Stage primaryStage = new Stage();
 				FXMLLoader loader = new FXMLLoader();
 				BorderPane root = loader.load(getClass().getResource("/application/User.fxml").openStream());
-				UserController uc = (UserController)loader.getController();
+				uc = (UserController)loader.getController();
 				uc.setUser(txtUserName.getText());
 				Scene scene = new Scene(root);
 				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());

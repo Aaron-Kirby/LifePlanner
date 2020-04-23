@@ -32,9 +32,9 @@ public class UserController implements Initializable{
 			((Node)event.getSource()).getScene().getWindow().hide();
 			Stage primaryStage = new Stage();
 			FXMLLoader loader = new FXMLLoader();
+			//CategoriesController cc = new CategoriesController();
 			BorderPane root = loader.load(getClass().getResource("/application/Categories.fxml").openStream());
-			CategoriesController cc = new CategoriesController();
-			cc.makeButtons();
+
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);

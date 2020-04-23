@@ -25,17 +25,18 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class CategoriesController implements Initializable{
+	CreateCategoryController ccc = new CreateCategoryController();
 	Connection connection;
 	@FXML
 	private VBox vboxx;
-	static ArrayList<Button> buttonList = new ArrayList<>();
+	List<Button> buttonList = new ArrayList<>();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
 	}
 
-	public void makeButtons() {
+	public CategoriesController() {
 		connection = SqliteConnection.Connector();
 		if (connection == null) {
 			System.out.println("Connection not successful");
@@ -62,7 +63,6 @@ public class CategoriesController implements Initializable{
 							Stage primaryStage = new Stage();
 							FXMLLoader loader = new FXMLLoader();
 							BorderPane root = loader.load(getClass().getResource("/application/Goals.fxml").openStream());
-							GoalsController gc = (GoalsController)loader.getController();
 							Scene scene = new Scene(root);
 							scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 							primaryStage.setScene(scene);
@@ -93,7 +93,6 @@ public class CategoriesController implements Initializable{
 			Stage primaryStage = new Stage();
 			FXMLLoader loader = new FXMLLoader();
 			Pane root = loader.load(getClass().getResource("/application/CreateCategory.fxml").openStream());
-			CreateCategoryController ccc = (CreateCategoryController)loader.getController();
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
