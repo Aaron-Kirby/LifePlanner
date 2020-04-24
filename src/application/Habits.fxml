@@ -35,4 +35,11 @@
          </content>
       </ScrollPane>
    </left>
+   <right>
+      <Button mnemonicParsing="false" text="Create Habit" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </right>
 </BorderPane>
